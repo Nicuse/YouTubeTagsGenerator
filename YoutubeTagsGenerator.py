@@ -18,9 +18,9 @@ print((Fore.RED + """
 """))
 print(Fore.LIGHTBLACK_EX + 'Made by Nicuse#6163' + Fore.LIGHTRED_EX)
 topics = input('Enter video topics (separate with commas): ')
-topics = topics.split(',')
+topics = topics.split(','); topics = [v.replace(' ', '') for v in topics]
 keywords = input('Enter keywords (separate with commas): ')
-keywords = keywords.split(',')
+keywords = keywords.split(','); keywords = [v.replace(' ', '') for v in keywords]
 type = input('Enter type ("hashtags" or "tags"): ')
 if type.lower() == 'tags':
     type = False
@@ -64,6 +64,9 @@ for i in range(generateAmount):
             generated.insert(0, i)
 if removeDuplicateTags:
     generated = [i for v,i in enumerate(generated) if i not in generated[:v]]
+
+if type == True:
+    generated = [v.replace(" ", "") for v in generated]
 
 if outputForm == 'txt':
     with open(f'{generateRS(5)}_Gen.txt', 'w') as f:
