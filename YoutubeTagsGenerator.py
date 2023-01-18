@@ -18,19 +18,42 @@ print((Fore.RED + """
 """))
 print(Fore.LIGHTBLACK_EX + 'Made by Nicuse#6163' + Fore.LIGHTRED_EX)
 topics = input('Enter video topics (separate with commas): ')
-topics = topics.split(','); topics = [v.replace(' ', '') for v in topics]
+topics = topics.split(',')
 keywords = input('Enter keywords (separate with commas): ')
-keywords = keywords.split(','); keywords = [v.replace(' ', '') for v in keywords]
-type = input('Enter type ("hashtags" or "tags"): ')
+keywords = keywords.split(',')
+for i, v in enumerate(keywords):
+    keywords[i] = v.strip()
+for i, v in enumerate(topics):
+    topics[i] = v.strip()
+while True:
+    type = input('Enter type ("hashtags" or "tags"): ')
+    if type in ['hashtags', 'tags']:
+        break
+    print('[!] Error occurred: Please enter "hashtags" or "tags"')
 if type.lower() == 'tags':
     type = False
 else:
     type = True
-outputForm = input('Output type (txt, printlist, print): ')
-generateAmount = int(input('Enter amount to generate: '))
-removeDuplicateTags = input('Remove duplicate tags? (Yes or No): ')
+while True:
+    outputForm = input('Output type (txt, printlist, print): ')
+    if outputForm in ['txt', 'printlist', 'print']:
+        break
+    print(f'[!] Error occurred: Please enter the avaliable options. (txt, printlist, print)')
+
+while True:
+    try:
+        generateAmount = int(input('Enter amount to generate: '))
+        break
+    except ValueError:
+        print(f'[!] Error occurred: Please enter a valid integer value.')
+while True:
+    removeDuplicateTags = input('Remove duplicate tags? (Yes or No): ').lower()
+    if removeDuplicateTags in ['yes', 'no']:
+        break
+    print('[!] Error occurred: Please enter "Yes" or "No"')
 if removeDuplicateTags.lower() == 'yes':
     removeDuplicateTags = True
+    print(Fore.LIGHTBLACK_EX + 'The tags generated will be decreased due to "remove duplicate tags"' + Fore.LIGHTRED_EX)
 else:
     removeDuplicateTags = False
 def generateKeyword(amount):
@@ -68,12 +91,16 @@ if removeDuplicateTags:
 if type == True:
     generated = [v.replace(" ", "") for v in generated]
 
+fName = f'{generateRS(5)}_Gen.txt'
+file_path = os.path.join(os.getcwd(), fName)
+
 if outputForm == 'txt':
-    with open(f'{generateRS(5)}_Gen.txt', 'w') as f:
+    with open(file_path, 'w') as f:
         f.write('Here you go!')
         for i in generated:
             f.write(f'\n\n{i},')
         f.close()
+    print(f'\nFile generated with name "{fName}" in {file_path}')
 elif outputForm == 'printlist':
     print(generated)
 else:
