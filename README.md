@@ -8,6 +8,8 @@
 [![Stars](https://img.shields.io/github/stars/Nicuse/YouTubeTagsGenerator?style=for-the-badge)](https://github.com/Nicuse/YouTubeTagsGenerator/stargazers)
 [![Downloads](https://img.shields.io/github/downloads/Nicuse/YouTubeTagsGenerator/total?style=for-the-badge)](https://github.com/Nicuse/YouTubeTagsGenerator)
 ---
+[![Download YTG](https://img.shields.io/badge/Download-YouTube%20Tags%20Generator-red?style=for-the-badge)](https://github.com/Nicuse/YouTubeTagsGenerator/releases/download/v1.0.2/YouTubeTagsGenerator.exe)
+---
 ### How to use?
 To use this tool, you can run the Python file or download the .EXE file from the releases. If you don't have Python installed, it's recommended to download the .EXE. If you do have Python installed, you can choose to run the source code or the .EXE.
 # Author
